@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spt.test.mybatisplus.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.spt.test.mybatisplus.entity.User">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <id column="email" property="email" jdbcType="VARCHAR"></id>
+    </resultMap>
+    <select id="getUserById" parameterType="Long" resultMap="BaseResultMap">
+        select * from user where id=#{id}
+    </select>
+
+</mapper>
+
