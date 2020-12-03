@@ -49,8 +49,6 @@ class TestMybatisPlusApplicationTests {
             System.out.println("添加数据失败");
         }
     }
-
-
     /**
      * 逻辑删除
      */
