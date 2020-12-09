@@ -12,6 +12,10 @@
         <module>study_jvm</module>
         <module>study_hashmap</module>
         <module>study_jvm_juc_core</module>
+        <module>stydy_collection</module>
+        <module>study_zoonkeeper</module>
+        <module>study_redis</module>
+        <module>study_designPattern</module>
     </modules>
 
     <parent>

@@ -1,7 +1,6 @@
 package com.startspt.test;
 
 
-import lombok.val;
 import org.junit.Test;
 
 import java.util.*;
@@ -27,7 +26,7 @@ import java.util.*;
  * 3.CurrentHashMap 和 Hashtable的异同？ CurrentHashMap底层实现了分段锁
  *
  * 二、Map结构的理解：
- *      Map中的key:无序的、不可重复的，使用Set存储所有的key（HashMap使用HashSet存，LinkedHashMap使用LinkedSer存）。
+ *      Map中的key:无序的、不可重复的，使用Set存储所有的key（HashMap使用HashSet存，LinkedHashMap使用LinkedSet存）。
  *          key所在的类要重写equals() 和 hashCode().(以HashMap为例)
  *      Map中的value:无序的、可重复的，使用Collection存储所有的value.
  *          value所在的类要重写equals()
@@ -37,7 +36,7 @@ import java.util.*;
  * 三、HashMap的底层实现原理？以jdk7为例说明：
  *      HashMap map= new HashMap();
  *      在实例化以后，底层创建了长度是16的一维数组Entry[] table。
- *      。。。可能已经执行过很多次put。。。
+ *      。。。可能已经执行过很多次put 。。。
  *      map.put(key1,value1);
  *      首先，调用key1所在类的hashCode()计算key1哈希值，此哈希值经过某种算法计算以后，得到在Entry数组中的存放位置
  *      如果此位置上的数据为空，此时的key1-value1(Entry)添加成功。----情况1
@@ -93,6 +92,18 @@ import java.util.*;
  *          查询：get(Object key)
  *          长度：size()
  *          遍历：keySet() / values() / entrySet()
+ *
+ *
+ *  其中loadFactor加载因子是表示Hsah表中元素的填满的程度.
+ *
+ * 若:加载因子越大,填满的元素越多,好处是,空间利用率高了,但:冲突的机会加大了.链表长度会越来越长,查找效率降低。
+ * 反之,加载因子越小,填满的元素越少,好处是:冲突的机会减小了,但:空间浪费多了.表中的数据将过于稀疏（很多空间还
+ * 没用，就开始扩容了）
+ *
+ * 冲突的机会越大,则查找的成本越高.
+ *
+ * 因此,必须在 "冲突的机会"与"空间利用率"之间寻找一种平衡与折衷. 这种平衡与折衷本质上是数据结构中有名的"时-空"
+ * 矛盾的平衡与折衷.
  *
  *
  *

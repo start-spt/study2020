@@ -8,10 +8,11 @@ import java.util.Iterator;
 
 /**
  *
- * 集合元素的遍历操作，使用迭代器Iterator接口
+ * 集合元素的遍历操作，使用迭代器Iterator接口:
  *  1.内部方法：hasNext() 和 next()
  *  2.集合对象每次调用iterator()方法都会得到一个全新的迭代器对象
  *     默认游标都在集合的第一个元素之前。
+ *  3.内部定义了remove(),可以在遍历的时候，删除集合中的元素。此方法不同于集合直接调用remove()
  *
  *
  * @Author: start-spt
@@ -95,6 +96,39 @@ public class IteratorTest {
 
     }
 
+    /**
+     * 测试Iterator中的remove()
+     *
+     * 如果还未调用next()或在上一次调用next() 方法之后已经调用了 remove() 方法，
+     * 再调remove() 都会报：IllegalStateException
+     *
+     */
+    @Test
+    public void test3() {
+        Collection coll = new ArrayList();
+
+        coll.add(123);
+        coll.add(456);
+        coll.add(new Person("Jerry", 20));
+        coll.add(new String("Tom"));
+        coll.add(false);
+
+        Iterator iterator = coll.iterator();
+
+        while (iterator.hasNext()){
+            //iterator.remove();// 没调用next()前，调用remove(),会报错：IllegalStateException
+            Object obj = iterator.next();
+            if("Tom".equals(obj)){
+                iterator.remove();
+                //iterator.remove();//调用完remove()方法，再调用remove(),会报错：IllegalStateException
+            }
+        }
+
+        iterator = coll.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+    }
 
 
-}
+    }
