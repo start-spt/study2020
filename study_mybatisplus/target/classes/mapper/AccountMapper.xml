@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spt.test.mybatisplus.mapper.AccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.spt.test.mybatisplus.entity.Account">
+        <!-- 定义主键 ,非常重要。如果是多个字段,则定义多个id -->
+        <!-- property：主键在pojo中的属性名 -->
+        <!-- column：主键在数据库中的列名 -->
+        <id column="id" property="id" jdbcType="INTEGER"></id>
+        <!-- 定义普通属性 -->
+        <result column="user_name" property="userName" jdbcType="VARCHAR"></result>
+        <result column="balance" property="balance" jdbcType="INTEGER"></result>
+    </resultMap>
+
+    <select id="getOneAccount" parameterType="Integer"  resultMap="BaseResultMap">
+        select * from t_account where id=#{id}
+    </select>
+
+    <update id="save" parameterType="com.spt.test.mybatisplus.entity.Account">
+        update t_account
+            set balance = #{balance}
+            where id = #{id}
+    </update>
+
+
+</mapper>
+

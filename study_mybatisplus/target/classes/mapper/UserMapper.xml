@@ -11,5 +11,23 @@
         select * from user where id=#{id}
     </select>
 
+    <select id="findAll" resultType="com.spt.test.mybatisplus.entity.User">
+        SELECT * FROM USER;
+    </select>
+    <select id="findById" resultType="com.spt.test.mybatisplus.entity.User" parameterType="INT" useCache="true">
+        SELECT * FROM  USER  WHERE ID = #{ID}
+    </select>
+    <update id="updateUser" parameterType="com.spt.test.mybatisplus.entity.User">
+        update USER
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="age != null">age=#{age},</if>
+            <if test="email != null">email=#{email},</if>
+        </set>
+        where id=#{id}
+    </update>
+    <!-- 开启二级缓存-->
+    <cache/>
+
 </mapper>
 

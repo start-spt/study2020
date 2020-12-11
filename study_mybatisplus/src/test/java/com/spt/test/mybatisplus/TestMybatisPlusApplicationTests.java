@@ -3,20 +3,25 @@ package com.spt.test.mybatisplus;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.spt.test.mybatisplus.entity.Account;
 import com.spt.test.mybatisplus.entity.User;
+import com.spt.test.mybatisplus.mapper.AccountMapper;
 import com.spt.test.mybatisplus.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import java.util.Date;
-import java.util.Map;
 
 @SpringBootTest
 class TestMybatisPlusApplicationTests {
 
     @Autowired
     private UserService userService;
+
+    @Resource
+    private AccountMapper accountMapper;
 
     @Test
     public void testUpdate() {
@@ -110,5 +115,17 @@ class TestMybatisPlusApplicationTests {
     @Test
     public void getUserById() {
         System.out.println(userService.getUserById(1L));
+    }
+
+    @Test
+    public void getOneAccount() {
+        System.out.println(accountMapper.getOneAccount(1));
+    }
+
+    @Test
+    public void saveAccount() {
+        Account fromUserAccount=accountMapper.getOneAccount(1);
+        fromUserAccount.setBalance(fromUserAccount.getBalance()-200);
+        accountMapper.save(fromUserAccount);
     }
 }

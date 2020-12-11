@@ -5,11 +5,16 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
-@Data
-public class User {
+//@Data
+@Getter
+@Setter
+public class User implements Serializable {
 //    @TableId(type=IdType.ASSIGN_ID)
     private Long id;
 //    @TableField(fill = FieldFill.INSERT)
@@ -41,4 +46,18 @@ public class User {
     @Version
     @TableField(fill = FieldFill.INSERT)
     private Integer version;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", deleteFlag=" + deleteFlag +
+                ", version=" + version +
+                '}';
+    }
 }
