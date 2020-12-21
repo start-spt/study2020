@@ -17,6 +17,9 @@
         <module>study_redis</module>
         <module>study_designPattern</module>
         <module>study_spring_core</module>
+        <module>study_activemq</module>
+        <module>study_activemq_boot_produce</module>
+        <module>study_activemq_boot_consumer</module>
     </modules>
 
     <parent>
@@ -25,16 +28,7 @@
         <version>2.1.0.RELEASE</version>
         <relativePath/>
     </parent>
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
