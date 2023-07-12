@@ -17,9 +17,7 @@
         <module>study_redis</module>
         <module>study_designPattern</module>
         <module>study_spring_core</module>
-        <module>study_activemq</module>
-        <module>study_activemq_boot_produce</module>
-        <module>study_activemq_boot_consumer</module>
+        <module>study_mybatisplus</module>
     </modules>
 
     <parent>
